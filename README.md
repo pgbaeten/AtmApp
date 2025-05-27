@@ -10,7 +10,7 @@ Ensure the following are installed on your system:
 ```
 AtmApp/
 ├── AtmApp/                # ASP.NET Core backend
-└── atm-app-frontend/      # Angular frontend
+└── stargate-ui/      # Angular frontend
 ```
 
 ## 🚀 Getting Started
