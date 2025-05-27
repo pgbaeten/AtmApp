@@ -1,0 +1,6 @@
+@AtmApp_HostAddress = http://localhost:5032
+
+GET {{AtmApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

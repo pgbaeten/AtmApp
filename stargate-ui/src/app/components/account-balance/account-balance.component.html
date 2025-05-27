@@ -1,0 +1,47 @@
+<div class="min-vh-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #121a36 0%, #174ea6 100%);">
+  <div class="card shadow-lg p-4" style="border-radius: 1.5rem; max-width: 500px; width: 100%;">
+    <h2 class="h4 fw-bold text-primary mb-3 text-center">Account Balances</h2>
+    <div *ngIf="loading" class="text-center mb-3">Loading...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="!loading && !error">
+      <div class="mb-3">
+        <table class="table table-bordered table-sm mb-0">
+          <thead class="table-light">
+            <tr>
+              <th class="text-center">Account</th>
+              <th class="text-center">Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">Checking</td>
+              <td class="text-center fw-bold text-success">${{ checkingBalance?.toFixed(2) ?? '0.00' }}</td>
+            </tr>
+            <tr>
+              <td class="text-center">Savings</td>
+              <td class="text-center fw-bold text-success">${{ savingsBalance?.toFixed(2) ?? '0.00' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="h5 mt-4 mb-2">Transaction History</h3>
+      <div *ngIf="transactions.length === 0" class="text-muted">No transactions found.</div>
+      <ul class="list-group" *ngIf="transactions.length > 0">
+        <li *ngFor="let tx of transactions" class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <div class="fw-bold">{{ tx.type | titlecase }} ({{ tx.accountType }})</div>
+            <div class="text-muted" style="font-size: 0.9em;">{{ tx.date | date:'short' }}</div>
+            <div *ngIf="tx.description" class="text-muted" style="font-size: 0.9em;">{{ tx.description }}</div>
+          </div>
+          <span [ngClass]="{
+              'text-success': tx.type === 'deposit',
+              'text-danger': tx.type === 'withdrawal' || tx.type === 'transfer'
+            }">
+            {{ tx.type === 'deposit' ? '+' : '-' }}${{ tx.amount.toFixed(2) }}
+          </span>
+        </li>
+      </ul>
+    </div>
+    <a routerLink="/" class="btn btn-link mt-3 w-100">← Back to Home</a>
+  </div>
+</div>
