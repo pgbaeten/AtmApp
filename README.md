@@ -50,11 +50,12 @@ dotnet run
 The backend API should now be running at `https://localhost:7212`.
 
 ### 3. Setup the Frontend
+This is an Angular project setup under the folder StargateUI
 
 Open a new terminal window and navigate to the frontend directory:
 
 ```bash
-cd atm-app-frontend
+cd stargate-ui
 ```
 
 Install dependencies:
