@@ -47,8 +47,13 @@ Run the application:
 dotnet run
 ```
 
-The backend API should now be running at `https://localhost:{portNumber}`.
-The portNumber should be shown when running dotnet run. To run correctly the port number should be set to 7212. I hardcoded the baseURL to this since that was the port it grabbed for me when I created this. The port number will either need to be set to 7212 or the services folders in the angular project need to be set to the port number that is assigned when running dotnet run.
+The backend API is configured to run at https://localhost:7212. This port was assigned by default when the project was initially created, and the Angular project’s service files currently reference this hardcoded base URL.
+
+When running the API with dotnet run, ensure that it uses port 7212 for compatibility. If a different port is assigned, you will need to either:
+
+Reconfigure the backend to run on port 7212, or
+
+Update the base URLs in the Angular project's service files to match the new port.
 
 ### 3. Setup the Frontend
 This is an Angular project setup under the folder StargateUI
